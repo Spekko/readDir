@@ -1,0 +1,36 @@
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <input type="text" class="form-control" #path name="path" id="path" placeholder="/">
+	</div>
+  </div>	
+  <div>
+    <button type="button" (click)="process(path.value)" class="btn btn-primary">fetch</button>
+  </div>
+</form>
+
+<p>{{ serverDetails }}</p>
+
+
+
+<table class="table">
+	<thead>
+	  <tr>
+	    <th scope="col">Name</th>
+		<th scope="col">Ext</th>
+		<th scope="col">Size</th>
+	  </tr>
+	</thead>
+	<tbody *ngFor="let key of keys();">
+	<tr>
+	  <th scope="row">{{key}}</th>
+	  <td>{{fileList[key].ext}}</td>
+	  <td>{{fileList[key].size}}</td>
+	</tr>
+	</tbody>
+
+</table>
+
+
+
+
