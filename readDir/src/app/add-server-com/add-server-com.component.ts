@@ -20,12 +20,22 @@ export class AddServerComComponent implements OnInit {
     this.valid = false;
   
   }
+
+  /**
+  *EventEmitter method used to send server details to parent component (root component)
+  *on success of connecting to and retrieving OS of server
+  **/
   @Output() notifyParent: EventEmitter<any> = new EventEmitter();
   sendNotification(send: string) 
   {
     this.notifyParent.emit(send);
   }
 
+  /**
+  *Called on button click of Server Details.
+  *Creates a post request to node server /getOS function. If connection is a success
+  *stores the server details and passes it on to root component
+  **/
   saveServer(serverIP: string, serverPort: string) 
   {
     this.serverIP = serverIP;

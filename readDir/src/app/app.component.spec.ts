@@ -1,12 +1,21 @@
 import { TestBed, async } from '@angular/core/testing';
+import {ScrollDispatchModule, ScrollDispatcher} from '@angular/cdk/scrolling';
 import { AppComponent } from './app.component';
+import { CommonModule } from '@angular/common';
+
+import { AddServerComponent } from './add-server-com/add-server-com.component';
+import { OutputTableComponent } from './output-table/output-table.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+		AddServerComponent,
+		OutputTableComponent
       ],
+	  providers: [ScrollDispatcher],
+	  imports: [ScrollDispatchModule, CommonModule],
     }).compileComponents();
   }));
 

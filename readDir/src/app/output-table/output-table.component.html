@@ -12,25 +12,48 @@
 <p>{{ serverDetails }}</p>
 
 
+<div *ngIf="flag != -1; else noDir">
+  <div class="container">
+  <cdk-virtual-scroll-viewport [itemSize]="10" style="height:400px" class="viewport">
 
-<table class="table">
-	<thead>
+  <table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">Name</th>
+		  <th scope="col">Ext</th>
+		  <th scope="col">Size</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <ng-container class="ng-container" *cdkVirtualFor='let key of keys();'>
+		  <tr>
+		    <th scope="row">{{key}}</th>
+			<td>{{fileList[key].ext}}</td>
+			<td>{{fileList[key].size}}</td>
+		  </tr>
+		</ng-container>
+	  </tbody>
+<!--
+	  <tbody *ngFor="let key of keys();">
 	  <tr>
-	    <th scope="col">Name</th>
-		<th scope="col">Ext</th>
-		<th scope="col">Size</th>
+	    <th scope="row">{{key}}</th>
+	    <td>{{fileList[key].ext}}</td>
+	    <td>{{fileList[key].size}}</td>
 	  </tr>
-	</thead>
-	<tbody *ngFor="let key of keys();">
-	<tr>
-	  <th scope="row">{{key}}</th>
-	  <td>{{fileList[key].ext}}</td>
-	  <td>{{fileList[key].size}}</td>
-	</tr>
-	</tbody>
+	  </tbody>
+  	-->  
 
-</table>
+  </table>
+  </cdk-virtual-scroll-viewport>
 
+</div>
+
+
+</div>
+
+<ng-template #noDir>
+  <p><strong>No such Directory</strong></p>
+</ng-template>
 
 
 
