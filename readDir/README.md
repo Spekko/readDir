@@ -9,5 +9,5 @@
 1. Enter node REST server IP and Port. Click save
 2. in the lower input field enter directory you want to list. 
 
-   Windows Example, `C:\Users`
+   Windows Example, `C:\Users`  
    Linux Example, `/home/user/Documents/`
