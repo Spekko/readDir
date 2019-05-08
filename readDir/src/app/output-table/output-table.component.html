@@ -22,6 +22,10 @@
 	      <th scope="col">Name</th>
 		  <th scope="col">Ext</th>
 		  <th scope="col">Size</th>
+		  <th scope="col">Readable</th>
+		  <th scope="col">Writeable</th>
+		  <th scope="col">Executable</th>
+		  
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -30,6 +34,10 @@
 		    <th scope="row">{{key}}</th>
 			<td>{{fileList[key].ext}}</td>
 			<td>{{fileList[key].size}}</td>
+			<td>{{fileList[key].read}}</td>
+			<td>{{fileList[key].write}}</td>
+			<td>{{fileList[key].execute}}</td>
+			
 		  </tr>
 		</ng-container>
 	  </tbody>

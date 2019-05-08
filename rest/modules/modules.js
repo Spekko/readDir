@@ -38,7 +38,7 @@ exports.listDirSync = function(req, res) {
 		dir = post['path'];
 
 		var files = {};
-		console.log(body);
+		console.log(dir);
 		if (!fs.existsSync(dir)) {
 			
 			res.json("-1");
@@ -56,9 +56,37 @@ exports.listDirSync = function(req, res) {
 			var filepath = path.resolve(dir, filename);
 			var size = fs.statSync(filepath).size;
 			var att = fs.statSync(filepath);
+			var read = "";
+			var write = "";
+			var execute = "";
+			try {
+				fs.accessSync(filepath, fs.constants.R_OK);
+				read = "yes";
+				
+			} catch (err) {
+				read = "no";
+			}	
+			
+			
+			try {
+				fs.accessSync(filepath, fs.constants.W_OK);
+				write = "yes";
+			} catch (err) {
+				write = "no";
+			}
+				
+			
+			
+			try {
+				fs.accessSync(filepath, fs.constants.X_OK);
+				execute = "yes";
+			} catch (err) {
+				execute = "no";
+			}
+				
+			
 
-
-			files[filepath] = {ext, size};
+			files[filepath] = {ext, size, read, write, execute};
 
 		});
 
