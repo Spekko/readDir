@@ -11,8 +11,8 @@ describe('OutputTableComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ OutputTableComponent ],
-	  providers: [ ScrollDispatcher ],
-	  imports: [ScrollDispatchModule, CommonModule],
+	    providers: [ ScrollDispatcher ],
+	    imports: [ScrollDispatchModule, CommonModule],
     })
     .compileComponents();
   }));

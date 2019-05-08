@@ -35,20 +35,19 @@ export class OutputTableComponent implements OnInit {
   {
 
     try {
-	  var httpHeaders = new HttpHeaders()
-		.set('content-type', 'application/json');
+	    var httpHeaders = new HttpHeaders()
+		    .set('content-type', 'application/json');
 
       
 	  
       var details = this.http.post('http://'+this.serverDetails+'/getDir/', "path="+path, {headers: httpHeaders}).subscribe(data => {
-	    //console.log(data);
+	  
         this.fileList = data;
-		this.flag = data;
+		    this.flag = data;
 
-	  });
+	    });
 
-	} catch (err) {
-	}
+	  } catch (err) {}
   }
 
   ngOnInit() {

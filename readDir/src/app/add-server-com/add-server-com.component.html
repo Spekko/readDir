@@ -3,11 +3,11 @@
     <div class="form-group col-md-2">
       <label for="serverIP">Server IP</label>
 	  <input type="text" #serverIP class="form-control" name="serverIP" id="serverIP" placeholder="127.0.0.1" >
-	</div>
-	<div class="form-group col-md-1">
-	  <label for="serverPort">Server Port</label>
-	  <input type="text" #serverPort class="form-control" name="serverPort" id="serverPort"  placeholder="8080" >
-	</div>
+		</div>
+		<div class="form-group col-md-1">
+	  	<label for="serverPort">Server Port</label>
+	  	<input type="text" #serverPort class="form-control" name="serverPort" id="serverPort"  placeholder="8080" >
+		</div>
   </div>
   <button type="button" (click)="saveServer(serverIP.value, serverPort.value)" class="btn btn-primary">Save</button>
 	  

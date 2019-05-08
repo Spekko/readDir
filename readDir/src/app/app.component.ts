@@ -25,11 +25,11 @@ export class AppComponent {
   getNotification(evt) 
   {
     if (evt == "-1") {
-		this.showTable = false;
-	} else {
+		  this.showTable = false;
+	  } else {
     	this.showTable = true;
     	this.serverDetails = evt;
-	}
+	  }
   }
 
   ngOnInit(): void {

@@ -4,7 +4,7 @@
   <div class="form-row">
     <div class="form-group col-md-5">
       <input type="text" class="form-control" #path name="path" id="path" placeholder="/">
-	</div>
+	  </div>
   </div>	
   <div>
     <button type="button" (click)="process(path.value)" class="btn btn-primary">fetch</button>
@@ -16,49 +16,37 @@
 
 <div *ngIf="flag != -1; else noDir">
   <div class="container">
-  <cdk-virtual-scroll-viewport [itemSize]="10" style="height:400px" class="viewport">
+    <cdk-virtual-scroll-viewport [itemSize]="10" style="height:400px" class="viewport">
 
-  <table class="table">
-	  <thead>
-	    <tr>
-	      <th scope="col">Name</th>
-		  <th scope="col">Ext</th>
-		  <th scope="col">Size</th>
-		  <th scope="col">Readable</th>
-		  <th scope="col">Writeable</th>
-		  <th scope="col">Executable</th>
+      <table class="table">
+	      <thead>
+	        <tr>
+	          <th scope="col">Name</th>
+		        <th scope="col">Ext</th>
+		        <th scope="col">Size</th>
+		        <th scope="col">Readable</th>
+		        <th scope="col">Writeable</th>
+		        <th scope="col">Executable</th>
 		  
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <ng-container class="ng-container" *cdkVirtualFor='let key of keys();'>
-		  <tr>
-		    <th scope="row">{{key}}</th>
-			<td>{{fileList[key].ext}}</td>
-			<td>{{fileList[key].size}}</td>
-			<td>{{fileList[key].read}}</td>
-			<td>{{fileList[key].write}}</td>
-			<td>{{fileList[key].execute}}</td>
-			
-		  </tr>
-		</ng-container>
-	  </tbody>
-<!--
-	  <tbody *ngFor="let key of keys();">
-	  <tr>
-	    <th scope="row">{{key}}</th>
-	    <td>{{fileList[key].ext}}</td>
-	    <td>{{fileList[key].size}}</td>
-	  </tr>
-	  </tbody>
-  	-->  
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <ng-container class="ng-container" *cdkVirtualFor='let key of keys();'>
+		        <tr>
+		          <th scope="row">{{key}}</th>
+			        <td>{{fileList[key].ext}}</td>
+			        <td>{{fileList[key].size}}</td>
+			        <td>{{fileList[key].read}}</td>
+			        <td>{{fileList[key].write}}</td>
+			        <td>{{fileList[key].execute}}</td>
+			      </tr>
+		      </ng-container>
+	      </tbody>
 
-  </table>
-  </cdk-virtual-scroll-viewport>
+      </table>
+    </cdk-virtual-scroll-viewport>
 
-</div>
-
-
+  </div>
 </div>
 
 <ng-template #noDir>

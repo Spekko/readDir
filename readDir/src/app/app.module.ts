@@ -13,7 +13,7 @@ import { OutputTableComponent } from './output-table/output-table.component';
     ScrollDispatchModule,
     CommonModule,
     BrowserModule,
-	HttpClientModule,
+	  HttpClientModule,
   ],
   exports: [ CommonModule , ScrollDispatchModule],
   declarations: [

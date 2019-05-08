@@ -39,29 +39,29 @@ export class AddServerComComponent implements OnInit {
   saveServer(serverIP: string, serverPort: string) 
   {
     this.serverIP = serverIP;
-	this.serverPort = serverPort;
-	var flag = false;
-	try {
+    this.serverPort = serverPort;
+    var flag = false;
+    try {
 
-		var os = this.http.post('http://'+this.serverIP+':'+this.serverPort+'/getOS', {}).subscribe(data => {
-			this.msg = 'Server is running ' + data;
-			this.valid = true;
-			this.sendNotification(this.serverIP+':'+this.serverPort);
-			flag = true;
-		});	
-		if (!flag) {
-			this.msg = "invalid server or port";
-			this.valid = false;
-			this.sendNotification('-1');
-		}
-		else
-			flag = false;
+      var os = this.http.post('http://'+this.serverIP+':'+this.serverPort+'/getOS', {}).subscribe(data => {
+        this.msg = 'Server is running ' + data;
+        this.valid = true;
+        this.sendNotification(this.serverIP+':'+this.serverPort);
+        flag = true;
+      });	
+      if (!flag) {
+        this.msg = "invalid server or port";
+        this.valid = false;
+        this.sendNotification('-1');
+      }
+      else
+        flag = false;
 
-	} catch (err) {
-		this.valid = false;
-		this.msg = "invalid server or port";
+    } catch (err) {
+      this.valid = false;
+      this.msg = "invalid server or port";
 
-	}
+    }
 
 
   }

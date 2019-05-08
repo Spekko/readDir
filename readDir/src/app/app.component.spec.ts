@@ -11,11 +11,11 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-		AddServerComponent,
-		OutputTableComponent
+		    AddServerComponent,
+		    OutputTableComponent
       ],
-	  providers: [ScrollDispatcher],
-	  imports: [ScrollDispatchModule, CommonModule],
+	    providers: [ScrollDispatcher],
+	    imports: [ScrollDispatchModule, CommonModule],
     }).compileComponents();
   }));
 
