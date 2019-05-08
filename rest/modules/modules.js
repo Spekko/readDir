@@ -54,37 +54,25 @@ exports.listDirSync = function(req, res) {
 			var name = path.parse(filename).name;
 			var ext = path.parse(filename).ext;
 			var filepath = path.resolve(dir, filename);
-			var size = fs.statSync(filepath).size;
-			var att = fs.statSync(filepath);
+			var stat = fs.statSync(filepath);
+			var size = stat.size;//fs.statSync(filepath).size;
+			
 			var read = "";
 			var write = "";
 			var execute = "";
-			try {
-				fs.accessSync(filepath, fs.constants.R_OK);
+			
+			if (checkPermission(stat.mode, fs.constants.R_OK))
 				read = "yes";
-				
-			} catch (err) {
+			else
 				read = "no";
-			}	
-			
-			
-			try {
-				fs.accessSync(filepath, fs.constants.W_OK);
+			if (checkPermission(stat.mode, fs.constants.W_OK))
 				write = "yes";
-			} catch (err) {
+			else
 				write = "no";
-			}
-				
-			
-			
-			try {
-				fs.accessSync(filepath, fs.constants.X_OK);
+			if (checkPermission(stat.mode, fs.constants.X_OK))
 				execute = "yes";
-			} catch (err) {
-				execute = "no";
-			}
-				
-			
+			else
+				execute = "no";		
 
 			files[filepath] = {ext, size, read, write, execute};
 
@@ -95,6 +83,26 @@ exports.listDirSync = function(req, res) {
 
 
 	});
+	
+}
+
+checkPermission = function(mode, mask) 
+{
+	var can;
+	if (mask == fs.constants.R_OK) {
+		can = !!(mask & parseInt((mode & parseInt("777", 8)).toString(8)[0]));
+		return can;
+	}
+	
+	if (mask == fs.constants.W_OK) {
+		can = !!(mask & parseInt((mode & parseInt("777", 8)).toString(8)[0]));
+		return can;
+	}
+	
+	if (mask == fs.constants.X_OK) {
+		can = !!(mask & parseInt((mode & parseInt("777", 8)).toString(8)[0]));
+		return can;
+	}
 	
 }
 
